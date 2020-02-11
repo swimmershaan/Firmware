@@ -1,4 +1,8 @@
-# PX4 Rocket Autopilot
+<<<<<<< HEAD
+# PX4 Rocket Autopilot 
+=======
+# PX4 Rocket Autopilot  
+>>>>>>> 66a2392111f0642d0d93d56fbcec9e19610070b6
 
 [![Releases](https://img.shields.io/github/release/PX4/Firmware.svg)](https://github.com/PX4/Firmware/releases) [![DOI](https://zenodo.org/badge/22634/PX4/Firmware.svg)](https://zenodo.org/badge/latestdoi/22634/PX4/Firmware)
 
