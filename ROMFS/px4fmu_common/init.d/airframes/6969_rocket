@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# @name Rocket
+#
+# @type Standard Plane
+# @class Plane
+#
+# @maintainer Simon Wilks <simon@uaventure.com>
+#
+# @output MAIN1 Lcanard
+# @output MAIN2 Rcanard
+# @output MAIN3 Fcanard
+# @output MAIN4 Bcanard
+
+sh /etc/init.d/rc.fw_defaults
+
+if [ $AUTOCNF = yes ]
+then
+	param set PWM_AUX_RATE 50
+	param set PWM_RATE 50
+fi
+
+set MIXER hermes
