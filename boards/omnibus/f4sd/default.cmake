@@ -5,13 +5,14 @@ px4_add_board(
 	MODEL f4sd
 	TOOLCHAIN arm-none-eabi
 	ARCHITECTURE cortex-m4
+	CONSTRAINED_MEMORY
 	ROMFSROOT px4fmu_common
 	CONSTRAINED_FLASH
 	SERIAL_PORTS
 		TEL2:/dev/ttyS1
 		URT6:/dev/ttyS2
 	DRIVERS
-		adc
+		adc/board_adc
 		#barometer # all available barometer drivers
 		barometer/bmp280
 		#batt_smbus
@@ -48,6 +49,7 @@ px4_add_board(
 		dataman
 		ekf2
 		events
+		flight_mode_manager
 		#fw_att_control
 		#fw_pos_control_l1
 		land_detector
@@ -76,6 +78,7 @@ px4_add_board(
 		hardfault_log
 		i2cdetect
 		led_control
+		#mft
 		mixer
 		#motor_ramp
 		motor_test

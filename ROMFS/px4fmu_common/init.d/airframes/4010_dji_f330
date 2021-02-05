@@ -8,7 +8,7 @@
 # @maintainer Lorenz Meier <lorenz@px4.io>
 #
 
-sh /etc/init.d/rc.mc_defaults
+. ${R}etc/init.d/rc.mc_defaults
 
 set MIXER quad_x
 set PWM_OUT 1234
@@ -29,5 +29,5 @@ then
 	param set MC_YAWRATE_D 0
 
 	# DJI ESCs do not support calibration and need a higher min
-	param set PWM_MIN 1230
+	param set PWM_MAIN_MIN 1230
 fi

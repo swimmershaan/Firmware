@@ -6,6 +6,7 @@ px4_add_board(
 	LABEL default
 	TOOLCHAIN arm-none-eabi
 	ARCHITECTURE cortex-m4
+	CONSTRAINED_MEMORY
 	ROMFSROOT px4fmu_common
 	IO px4_io-v2_default
 	TESTING
@@ -17,14 +18,15 @@ px4_add_board(
 		TEL3:/dev/ttyS0
 		TEL4:/dev/ttyS6
 	DRIVERS
-		adc
+		adc/board_adc
+		adc/ads1115
 		barometer # all available barometer drivers
 		batt_smbus
 		camera_capture
 		camera_trigger
 		differential_pressure # all available differential pressure drivers
 		distance_sensor # all available distance sensor drivers
-		#dshot
+		dshot
 		gps
 		#heater
 		#imu # all available imu drivers
@@ -41,6 +43,7 @@ px4_add_board(
 		optical_flow/px4flow
 		#osd
 		pca9685
+		pca9685_pwm_out
 		power_monitor/ina226
 		#protocol_splitter
 		pwm_input
@@ -63,6 +66,7 @@ px4_add_board(
 		ekf2
 		esc_battery
 		events
+		flight_mode_manager
 		fw_att_control
 		fw_pos_control_l1
 		land_detector
@@ -93,6 +97,7 @@ px4_add_board(
 		hardfault_log
 		i2cdetect
 		led_control
+		mft
 		mixer
 		motor_ramp
 		motor_test
@@ -104,6 +109,7 @@ px4_add_board(
 		reboot
 		reflect
 		sd_bench
+		system_time
 		tests # tests and test runner
 		top
 		topic_listener

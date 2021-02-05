@@ -23,7 +23,7 @@
 
 echo "Executing 4250_teal script."
 
-sh /etc/init.d/rc.mc_defaults
+. ${R}etc/init.d/rc.mc_defaults
 
 set MIXER quad_x
 set PWM_OUT 1234
@@ -31,7 +31,7 @@ set PWM_OUT 1234
 if [ $AUTOCNF = yes ]
 then
 	# First thing, reset all params to default... EXCEPT THIS LIST
-	param reset_nostart RC* COM_FLTMODE* LND_FLIGHT_T_* TC_* CAL_ACC* CAL_GYRO* CAL_MAG* SENS_BOARD* EKF2_MAGBIAS*
+	param reset_all SYS_AUTOSTART SYS_AUTOCONFIG RC* COM_FLTMODE* LND_FLIGHT_T_* TC_* CAL_ACC* CAL_GYRO* CAL_MAG* SENS_BOARD* EKF2_MAGBIAS*
 
 	# battery
 	param set BAT_CAPACITY 2750
@@ -49,8 +49,6 @@ then
 	# sensor calibration
 	param set CAL_MAG_SIDES 63
 	param set SENS_BOARD_ROT 0
-	param set COM_ARM_MAG_ANG -1
-	param set COM_ARM_EKF_AB 0.0032
 
 	# circuit breakers
 	param set CBRK_IO_SAFETY 22027
@@ -173,11 +171,11 @@ then
 	param set NAV_RCL_ACT 1
 
 	# pwm control
-	param set PWM_DISARMED 900
-	param set PWM_MAX 1850
-	param set PWM_MIN 1075
+	param set PWM_MAIN_DISARM 900
+	param set PWM_MAIN_MAX 1850
+	param set PWM_MAIN_MIN 1075
 	# Oneshot125
-	param set PWM_RATE 0
+	param set PWM_MAIN_RATE 0
 
 	# rtl
 	param set RTL_DESCEND_ALT 5
@@ -186,17 +184,11 @@ then
 	param set RTL_RETURN_ALT 25
 
 	# calibration
-	param set CAL_ACC0_EN 1
-	param set CAL_ACC1_EN 0
-	#mpu6500
-	param set CAL_ACC_PRIME 1442826
+	param set CAL_ACC0_PRIO 255
+	param set CAL_ACC1_PRIO 0
 
-	param set CAL_GYRO0_EN 1
-	param set CAL_GYRO1_EN 0
-	#mpu6500
-	param set CAL_GYRO_PRIME 2360330
-
-	param set CAL_MAG_PRIME 265738
+	param set CAL_GYRO0_PRIO 255
+	param set CAL_GYRO1_PRIO 0
 fi
 
 # Logger mode. Default(1) + estimator replay(2) + thermal calibration(4)
